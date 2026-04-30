@@ -21,15 +21,15 @@ test.describe('Playwright Home Page', () => {
     }
   );
 
-    test(
-      'should navigate from home to documentation page via Get Started',
-      async ({ page }) => {
-        const homePage = new PlaywrightHomePage(page);
-        await homePage.navigateToHome();
-        await homePage.clickGetStarted();
-  
-        const docPage = new DocPage(page);
-        await expect(docPage.heading).toBeVisible();
-      }
-    );
+  test(
+    'should navigate from home to documentation page via Get Started',
+    async ({ page }) => {
+      const homePage = new PlaywrightHomePage(page);
+      await homePage.navigateToHome();
+      await homePage.clickGetStarted();
+
+      const docPage = new DocPage(page);
+      await expect(docPage.heading).toBeVisible();
+    }
+  );
 });

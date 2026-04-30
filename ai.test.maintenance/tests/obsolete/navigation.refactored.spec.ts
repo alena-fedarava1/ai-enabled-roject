@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { NavigationPanelRefactored } from '../components/navigationPanel.refactored';
+import { NavigationPanelRefactored } from '../../components/navigationPanel.refactored';
 
 test.describe('Navigation panel', () => {
   test('should display navigation buttons: Docs, API', async ({ page }) => {

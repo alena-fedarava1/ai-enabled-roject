@@ -17,7 +17,7 @@ jobs:
   playwright-tests:
     timeout-minutes: 30
     runs-on: ubuntu-latest
-    environment: github-pages
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -140,7 +140,6 @@ jobs:
         
         mkdir -p playwright-report
         echo "$UPDATED_HISTORY" > playwright-report/test-history.json
-        echo "Updated history: $UPDATED_HISTORY"
 
     - name: Upload pages artifact
       if: always() && github.ref == 'refs/heads/main'
@@ -150,8 +149,9 @@ jobs:
 
     - name: Deploy to GitHub Pages
       if: always() && github.ref == 'refs/heads/main'
-      id: deployment
       uses: actions/deploy-pages@v4
+      environment:
+        name: github-pages
 
   security-scan:
     runs-on: ubuntu-latest
@@ -180,3 +180,4 @@ jobs:
         echo "$AUDIT_OUTPUT" >> $GITHUB_STEP_SUMMARY
         echo '```' >> $GITHUB_STEP_SUMMARY
         npm audit --audit-level=high
+        
